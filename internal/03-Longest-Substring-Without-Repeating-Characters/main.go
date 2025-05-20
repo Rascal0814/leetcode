@@ -1,36 +1,23 @@
-package main
+package _3_Longest_Substring_Without_Repeating_Characters
 
-import "fmt"
-
-func main() {
-	fmt.Println(two(""))
-}
-
-// 	滑动窗口：left，right 左右窗口，若右边元素在bucket中存在的话就左边滑动1，若不存在右边滑动1
+// https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/
 func lengthOfLongestSubstring(s string) int {
-
-	if len(s) == 0 {
-		return 0
+	if len(s) <= 0 {
+		return len(s)
 	}
-
-	left, right, maxString := 0, 0, 0
-
-	var bucket [256]bool
-
-	for left < len(s) && right < len(s) {
-
-		if bucket[s[right]] {
-			bucket[s[left]] = false
-			left++
+	l, r, n, exitMap, res := 0, 0, len(s), make(map[uint8]bool), 0
+	for r < n {
+		if exitMap[s[r]] {
+			exitMap[s[l]] = false
+			l++
 		} else {
-			bucket[s[right]] = true
-			right++
+			exitMap[s[r]] = true
+			r++
 		}
-
-		if maxString < right-left {
-			maxString = right - left
+		if r-l > res {
+			res = r - l
 		}
-
 	}
-	return maxString
+
+	return res
 }
