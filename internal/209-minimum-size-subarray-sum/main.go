@@ -1,21 +1,20 @@
 package _09_minimum_size_subarray_sum
 
-const _ = `
-209. 长度最小的子数组
-中等
-相关标签
-相关企业
-给定一个含有 n 个正整数的数组和一个正整数 target 。
-
-找出该数组中满足其总和大于等于 target 的长度最小的 
-子数组
- [numsl, numsl+1, ..., numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。
-
-`
-
+// https://leetcode.cn/problems/minimum-size-subarray-sum/description/
 func minSubArrayLen(target int, nums []int) int {
-	l, r := 0, 1
-	for l < r {
-
+	l, sum, ans := 0, 0, len(nums)+1
+	for r, v := range nums {
+		sum += v
+		for sum-nums[l] >= target { // 竟可能的压缩子字符串的长度
+			sum -= nums[l]
+			l++
+		}
+		if sum >= target {
+			ans = min(ans, r-l+1)
+		}
 	}
+	if ans > len(nums) {
+		return 0
+	}
+	return ans
 }
