@@ -1,6 +1,9 @@
 [科学刷题](https://leetcode.cn/circle/discuss/RvFUtj/)  
 ![img.png](static/img.png)  
-目前二分算法-基础篇第 1 章 第 1 节 第 1 题 (题号: 34)
+目前二分算法-二分答案求最小第 2 章 第 1 节 第 9 题 (题号: 3048)
+### 未解
+- [3296. 移山所需的最少秒数](https://leetcode.cn/problems/minimum-number-of-seconds-to-make-mountain-height-zero/description/)
+
 ### 滑动窗口
 - 求子数组 - 越长越合法
     ```txt
